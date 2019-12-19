@@ -155,23 +155,6 @@ def yen(G,source,target,K):
 
 
 
-
-
-
-            # if len(rp) > 0 and sn != target:
-            #
-            #     extra_edges = [];
-            #     extra_edges = G.edges(rp[len(rp)-1])  ;
-            #
-            #     for eg in extra_edges:
-            #         src=eg[0];
-            #         tgt=eg[1];
-            #         removed_root_edges.append(cprm(G,src,tgt));
-            #
-            #     removed_root_nodes.append(cprmnode(G,rp[len(rp)-1]));
-
-
-
             erp = A[k-1][:i+1];  # extended root path
             for p in A:
                 if erp == p[:i+1] and G.has_edge(p[i],p[i+1]):
@@ -259,23 +242,6 @@ print(result)
 
 df = pd.DataFrame(result,columns =['path','distance','risk_logit','risk_poi','risk_Xgboost','ANN'])
 
-
-    
-
-#
-#k_shortest_paths_file=open('%d_SPs_btw_%s_%s.csv' %(k,src,tgt),'w');
-#k_shortest_paths_file.write('Source,Target,kth-path,Distance,,,SHORTEST PATH,,,,,\n');
-#k_shortest_paths_file.write('%s,%s,' %(src,tgt));
-#
-#for i in enumerate(k_path):
-#    if (i[0]==0):
-#        k_shortest_paths_file.write('%d,%f,,,' %(i[0]+1,path_costs[i[0]]));
-#    else:
-#        k_shortest_paths_file.write(',,%d,%f,,,' %(i[0]+1,path_costs[i[0]]));
-#    for j in range(len(i[1])):
-#        k_shortest_paths_file.write('%s,' %(i[1][j]))
-#
-#    k_shortest_paths_file.write('\n');
 df.to_csv('result_k=4.csv')
 
 
